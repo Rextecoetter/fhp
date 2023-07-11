@@ -1,5 +1,4 @@
 import 'package:fhp/app/core/ui/helper/size_extension.dart';
-import 'package:fhp/app/core/ui/style/button_styles.dart';
 import 'package:fhp/app/core/ui/widgets/hogwarts_default_button.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +19,11 @@ class InicialPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              HogwartsDefaultButton(label: 'Personagens', onPressed: () {}),
+              HogwartsDefaultButton(
+                  label: 'Personagens',
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/characters');
+                  }),
               const SizedBox(
                 height: 20,
               ),
