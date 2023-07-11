@@ -12,34 +12,43 @@ class ButtonStyles {
   }
 
   ButtonStyle get griffindorButton => ElevatedButton.styleFrom(
+        elevation: 30,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         backgroundColor: ColorsStyles.i.griffindorDarkRed,
-        textStyle: TextStyles.i.textBold.copyWith(color: ColorsStyles.i.griffindorYellow),
+        foregroundColor: ColorsStyles.i.griffindorYellow,
+        textStyle: TextStyles.i.textButtomLabel,
       );
 
   ButtonStyle get slytherinButton => ElevatedButton.styleFrom(
+        elevation: 30,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         backgroundColor: ColorsStyles.i.slytherinDarkGreen,
-        textStyle: TextStyles.i.textBold.copyWith(color: ColorsStyles.i.slytherinLightSilver),
+        foregroundColor: ColorsStyles.i.slytherinLightSilver,
+        textStyle: TextStyles.i.textButtomLabel,
       );
 
   ButtonStyle get ravenClawButton => ElevatedButton.styleFrom(
+        elevation: 30,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         backgroundColor: ColorsStyles.i.ravenClawDarkBlue,
-        textStyle: TextStyles.i.textBold.copyWith(color: ColorsStyles.i.ravenClawGold),
+        foregroundColor: ColorsStyles.i.ravenClawGold,
+        textStyle: TextStyles.i.textButtomLabel,
       );
 
   ButtonStyle get hufflepuffButton => ElevatedButton.styleFrom(
+        elevation: 30,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         backgroundColor: ColorsStyles.i.hufflepuffYellow,
-        textStyle: TextStyles.i.textBold.copyWith(color: ColorsStyles.i.hufflepuffDarkBrown),
+        foregroundColor: ColorsStyles.i.hufflepuffDarkBrown,
+        textStyle: TextStyles.i.textButtomLabel,
       );
 
   ButtonStyle get hogwartsButton => ElevatedButton.styleFrom(
         elevation: 30,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         backgroundColor: ColorsStyles.i.hogwartsBlack,
-        textStyle: TextStyles.i.textButtomLabel.copyWith(color: ColorsStyles.i.hogwartsGold),
+        foregroundColor: ColorsStyles.i.hogwartsGold,
+        textStyle: TextStyles.i.textButtomLabel,
       );
 }
 

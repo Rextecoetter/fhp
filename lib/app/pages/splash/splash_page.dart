@@ -1,5 +1,6 @@
 import 'package:fhp/app/core/ui/helper/size_extension.dart';
 import 'package:fhp/app/core/ui/style/button_styles.dart';
+import 'package:fhp/app/core/ui/widgets/hogwarts_default_button.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatelessWidget {
@@ -24,27 +25,24 @@ class SplashPage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
-                      height: context.percentHeight(.05),
-                      width: context.percentWidth(.4),
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ButtonStyles.i.hogwartsButton,
-                        child: const Text('Portugues'),
-                      ),
+                    HogwartsDefaultButton(
+                      label: 'Portugues',
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('/inicial');
+                      },
                     ),
-                    SizedBox(
-                      height: context.percentHeight(.05),
-                      width: context.percentWidth(.4),
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ButtonStyles.i.hogwartsButton,
-                        child: const Text('English'),
-                      ),
+                    HogwartsDefaultButton(
+                      label: 'English',
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('/inicial');
+                      },
                     ),
                   ],
                 ),
-              )
+              ),
+              const SizedBox(
+                height: 40,
+              ),
             ],
           )
         ],
