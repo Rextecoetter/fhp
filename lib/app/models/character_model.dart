@@ -81,6 +81,7 @@ class CharacterModel {
   }
 
   factory CharacterModel.fromMap(Map<String, dynamic> map) {
+    print('batata model');
     return CharacterModel(
       id: map['id'] ?? '',
       name: map['name'] ?? '',

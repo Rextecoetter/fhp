@@ -14,12 +14,13 @@ class CharacterRepositoryImpl extends CharacterRepository {
     var result = await dio.get('/characters');
 
     for (var character in result.data) {
+      print('batata');
       var tempCharacter = CharacterModel.fromMap(character);
-
+      print('batata 2222');
       print(tempCharacter.name);
+
     }
 
-    // TODO: implement getAllCharacters
     throw UnimplementedError();
   }
 }

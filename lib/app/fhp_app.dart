@@ -11,7 +11,7 @@ class FhpApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ApplicationBindings(
       child: MaterialApp(
-        title: 'Flutter Harry Potter App',
+        title: 'Harry Potter Flutter App',
         theme: ThemeData(useMaterial3: true),
         routes: {
           '/': (context) => const SplashPage(),
