@@ -81,11 +81,10 @@ class CharacterModel {
   }
 
   factory CharacterModel.fromMap(Map<String, dynamic> map) {
-    print('batata model');
     return CharacterModel(
       id: map['id'] ?? '',
       name: map['name'] ?? '',
-      alternateNames: List<String>.from(map['alternateNames']),
+      alternateNames: List<String>.from(map['alternate_names']),
       species: map['species'] ?? '',
       gender: map['gender'] ?? '',
       house: map['house'] ?? '',
@@ -98,7 +97,7 @@ class CharacterModel {
       hogwartsStudent: map['hogwartsStudent'] ?? false,
       hogwartsStaff: map['hogwartsStaff'] ?? false,
       actor: map['actor'] ?? '',
-      alternateActors: List<String>.from(map['alternateActors']),
+      alternateActors: List<String>.from(map['alternate_actors']),
       alive: map['alive'] ?? false,
       image: map['image'] ?? '',
     );

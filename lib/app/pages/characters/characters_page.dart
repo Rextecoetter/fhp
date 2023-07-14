@@ -3,10 +3,10 @@ import 'package:fhp/app/core/ui/style/colors_styles.dart';
 import 'package:fhp/app/core/ui/style/text_styles.dart';
 import 'package:fhp/app/pages/characters/character_state.dart';
 import 'package:fhp/app/pages/characters/characters_controller.dart';
+import 'package:fhp/app/pages/characters/widgets/character_tile.dart';
 import 'package:fhp/app/pages/characters/widgets/search_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 
 import '../../core/ui/helper/messages.dart';
 
@@ -54,18 +54,32 @@ class _CharactersPageState extends State<CharactersPage> with Loader, Messages {
         body: Padding(
           padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
           child: Center(
-            child: BlocConsumer<CharactersController , CharacterState>(
+            child: BlocConsumer<CharactersController, CharacterState>(
               listener: (context, state) {
-                // TODO: implement listener
+                switch (state.status) {
+                  case CharacterStateStatus.loading:
+                    showLoader(ColorsStyles.i.hogwartsBlack, ColorsStyles.i.hogwartsGold);
+                  case _:
+                    hideLoader();
+                }
               },
               builder: (context, state) {
                 return Column(
                   children: [
                     Form(
                       key: formKey,
-                      child: SearchTextFormField(tec: characterNameEC),
+                      child: SearchTextFormField(
+                        tec: characterNameEC,
+                        characterModelList: state.characters,
+                      ),
                     ),
-                    //Expanded(child: child)
+                    Expanded(
+                        child: ListView.builder(
+                      itemCount: state.characters.length,
+                      itemBuilder: (context, index) {
+                        return CharacterTile(characterName: state.characters[index].name);
+                      },
+                    )),
                   ],
                 );
               },
