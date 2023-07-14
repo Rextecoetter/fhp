@@ -32,4 +32,22 @@ class CharactersController extends Cubit<CharacterState> {
     }
     emit(state.copyWith(status: CharacterStateStatus.loaded, characters: tempList));
   }
+
+  void getFilteredByHouse({required List<CharacterModel> characterModelList, required String house}) {
+    if (house.isEmpty) {
+      loadCharacters();
+      return;
+    }
+
+    final List<CharacterModel> tempList = [];
+    emit(state.copyWith(status: CharacterStateStatus.loading));
+    for (var characterModel in characterModelList) {
+      if (characterModel.house.toLowerCase().contains(house.toLowerCase())) {
+        tempList.add(characterModel);
+      }
+    }
+    emit(state.copyWith(status: CharacterStateStatus.loaded, characters: tempList));
+  }
+
+  
 }

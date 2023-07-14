@@ -1,16 +1,16 @@
 import 'package:fhp/app/core/ui/helper/size_extension.dart';
 import 'package:flutter/material.dart';
 
-import '../style/button_styles.dart';
-
-class HogwartsDefaultButton extends StatelessWidget {
+class AppDefaultButton extends StatelessWidget {
   final String label;
   final VoidCallback? onPressed;
   final double? height;
   final double? width;
+  final ButtonStyle style;
 
-  const HogwartsDefaultButton({
+  const AppDefaultButton({
     super.key,
+    required this.style,
     required this.label,
     required this.onPressed,
     this.height,
@@ -22,13 +22,13 @@ class HogwartsDefaultButton extends StatelessWidget {
     return ConstrainedBox(
       constraints: const BoxConstraints(
         maxHeight: 42.0,
-        maxWidth: 158.0,
+        maxWidth: 300.0,
       ),
       child: SizedBox(
         height: height ?? context.percentHeight(.05),
         width: width ?? context.percentWidth(.4),
         child: ElevatedButton(
-          style: ButtonStyles.i.hogwartsButton,
+          style: style,
           onPressed: onPressed,
           child: Text(label),
         ),
