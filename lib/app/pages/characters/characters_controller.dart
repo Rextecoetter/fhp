@@ -17,13 +17,19 @@ class CharactersController extends Cubit<CharacterState> {
     emit(state.copyWith(status: CharacterStateStatus.loaded, characters: characters));
   }
 
-  void getFiltered({required List<CharacterModel> characterModelList, required filter}) {
-    var tempList = [];
+  void getFiltered({required List<CharacterModel> characterModelList, required String filter}) {
+    if (filter.isEmpty) {
+      loadCharacters();
+      return;
+    }
+
+    final List<CharacterModel> tempList = [];
     emit(state.copyWith(status: CharacterStateStatus.loading));
     for (var characterModel in characterModelList) {
-      if (characterModel.name.contains(filter)) {
+      if (characterModel.name.toLowerCase().contains(filter.toLowerCase())) {
         tempList.add(characterModel);
       }
     }
+    emit(state.copyWith(status: CharacterStateStatus.loaded, characters: tempList));
   }
 }

@@ -35,7 +35,7 @@ class SearchTextFormField extends StatelessWidget {
         focusedBorder: _defaultInputBorder,
       ),
       onChanged: (value) {
-        context.read<CharactersController>().getFiltered(characterModelList: state., filter: tec.value);
+        context.read<CharactersController>().getFiltered(characterModelList: characterModelList, filter: tec.text);
       },
     );
   }

@@ -6,7 +6,6 @@ enum CharacterStateStatus {
   initial,
   loading,
   loaded,
-  filtred,
   error,
 }
 
