@@ -1,15 +1,15 @@
+import 'package:fhp/app/pages/characters/character_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/ui/style/button_styles.dart';
 import '../../../core/ui/widgets/app_default_button.dart';
-import '../../../models/character_model.dart';
 import '../characters_controller.dart';
 
 class ModalBottonSheetFilter extends StatelessWidget {
-  const ModalBottonSheetFilter({super.key, required this.characterModelList});
+  const ModalBottonSheetFilter({super.key, required this.state});
 
-  final List<CharacterModel> characterModelList;
+  final CharacterState state;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class ModalBottonSheetFilter extends StatelessWidget {
             onPressed: () {
               context
                   .read<CharactersController>()
-                  .getFilteredByHouse(characterModelList: characterModelList, house: 'Gryffindor');
+                  .getFilteredByHouse(characterModelList: state.characters, house: 'Gryffindor');
               Navigator.pop(context);
             },
           ),
@@ -35,7 +35,9 @@ class ModalBottonSheetFilter extends StatelessWidget {
             style: ButtonStyles.i.slytherinButton,
             label: 'Alunos de Sonserina',
             width: 300,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
           const SizedBox(
             height: 10,

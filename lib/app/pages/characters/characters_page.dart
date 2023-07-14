@@ -91,7 +91,7 @@ class _CharactersPageState extends State<CharactersPage> with Loader, Messages {
                           backgroundColor: ColorsStyles.i.hogwartsGold.withAlpha(80),
                           context: context,
                           builder: (context) {
-                            return ModalBottonSheetFilter(characterModelList: state.characters,);
+                            return ModalBottonSheetFilter(state: state);
                           },
                         );
                       },
