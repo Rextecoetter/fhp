@@ -46,7 +46,9 @@ class ModalBottonSheetFilter extends StatelessWidget {
             style: ButtonStyles.i.ravenClawButton,
             label: 'Alunos de Corvinal',
             width: 300,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
           const SizedBox(
             height: 10,
@@ -55,7 +57,9 @@ class ModalBottonSheetFilter extends StatelessWidget {
             style: ButtonStyles.i.hufflepuffButton,
             label: 'Alunos de Lufa Lufa',
             width: 300,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
           const SizedBox(
             height: 10,
@@ -64,7 +68,9 @@ class ModalBottonSheetFilter extends StatelessWidget {
             style: ButtonStyles.i.hogwartsButton,
             label: 'Staff de Hogwarts',
             width: 300,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
           const SizedBox(
             height: 10,
@@ -73,7 +79,9 @@ class ModalBottonSheetFilter extends StatelessWidget {
             style: ButtonStyles.i.hogwartsButton,
             label: 'Todos os Personagens',
             width: 300,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
           )
         ],
       ),
