@@ -17,7 +17,7 @@ class CharactersRouter {
               dio: context.read<CustomDio>(),
             ),
           ),
-          Provider(
+          Provider<CharactersController>(
             create: (context) => CharactersController(context.read()),
           ),
         ],
