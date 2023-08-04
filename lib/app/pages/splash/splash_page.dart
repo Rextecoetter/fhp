@@ -29,14 +29,14 @@ class SplashPage extends StatelessWidget {
                       style: ButtonStyles.i.hogwartsButton,
                       label: 'Portugues',
                       onPressed: () {
-                        Navigator.of(context).pushNamed('/inicial');
+                        Navigator.of(context).popAndPushNamed('/inicial');
                       },
                     ),
                     AppDefaultButton(
                       style: ButtonStyles.i.hogwartsButton,
                       label: 'English',
                       onPressed: () {
-                        Navigator.of(context).pushNamed('/inicial');
+                        Navigator.of(context).popAndPushNamed('/inicial');
                       },
                     ),
                   ],

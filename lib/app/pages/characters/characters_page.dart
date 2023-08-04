@@ -28,7 +28,9 @@ class _CharactersPageState extends State<CharactersPage> with Loader, Messages {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      context.read<CharactersController>().loadCharacters();
+      final param = ModalRoute.of(context)?.settings.arguments as String?;
+
+      context.read<CharactersController>().loadCharacters(param);
     });
   }
 
