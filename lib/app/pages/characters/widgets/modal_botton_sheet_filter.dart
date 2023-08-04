@@ -1,10 +1,8 @@
 import 'package:fhp/app/pages/characters/character_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/ui/style/button_styles.dart';
 import '../../../core/ui/widgets/app_default_button.dart';
-import '../characters_controller.dart';
 
 class ModalBottonSheetFilter extends StatelessWidget {
   const ModalBottonSheetFilter({super.key, required this.state});
@@ -22,7 +20,7 @@ class ModalBottonSheetFilter extends StatelessWidget {
             label: 'Alunos de Grifinoria',
             width: 300,
             onPressed: () {
-              Navigator.of(context).pushNamedAndRemoveUntil('/characters',  ModalRoute.withName('/inicial'));
+              Navigator.of(context).pushNamedAndRemoveUntil('/characters', ModalRoute.withName('/inicial'));
               // context
               //     .read<CharactersController>()
               //     .getFilteredByHouse(characterModelList: state.characters, house: 'Gryffindor');
