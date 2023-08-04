@@ -12,23 +12,28 @@ class CharacterTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Expanded(
-                child: Text(
-                  characterName,
-                  style: TextStyles.i.textBold.copyWith(color: ColorsStyles.i.hogwartsBlack, fontSize: 25),
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).pushNamed('/character_detail');
+        },
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    characterName,
+                    style: TextStyles.i.textBold.copyWith(color: ColorsStyles.i.hogwartsBlack, fontSize: 25),
+                  ),
                 ),
-              ),
-              Text(
-                '>',
-                style: TextStyles.i.textBold.copyWith(color: ColorsStyles.i.hogwartsBlack),
-              )
-            ],
-          ),
-        ],
+                Text(
+                  '>',
+                  style: TextStyles.i.textBold.copyWith(color: ColorsStyles.i.hogwartsBlack),
+                )
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

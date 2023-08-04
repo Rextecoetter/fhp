@@ -21,6 +21,8 @@ class CharactersRouter {
             create: (context) => CharactersController(context.read()),
           ),
         ],
-        child: const CharactersPage(),
+        builder: (context, child) {
+          return const CharactersPage();
+        },
       );
 }

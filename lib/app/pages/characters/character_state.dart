@@ -5,6 +5,10 @@ import 'package:fhp/app/models/character_model.dart';
 enum CharacterStateStatus {
   initial,
   loading,
+  loadingGryffindor,
+  loadingSlytherin,
+  loadingRavenClaw,
+  loadingHufflePuff,
   loaded,
   error,
 }
@@ -12,6 +16,7 @@ enum CharacterStateStatus {
 class CharacterState extends Equatable {
   final CharacterStateStatus status;
   final List<CharacterModel> characters;
+
   const CharacterState({
     required this.status,
     required this.characters,

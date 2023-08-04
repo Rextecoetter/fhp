@@ -22,10 +22,11 @@ class ModalBottonSheetFilter extends StatelessWidget {
             label: 'Alunos de Grifinoria',
             width: 300,
             onPressed: () {
-              context
-                  .read<CharactersController>()
-                  .getFilteredByHouse(characterModelList: state.characters, house: 'Gryffindor');
-              Navigator.pop(context);
+              Navigator.of(context).pushNamedAndRemoveUntil('/characters',  ModalRoute.withName('/inicial'));
+              // context
+              //     .read<CharactersController>()
+              //     .getFilteredByHouse(characterModelList: state.characters, house: 'Gryffindor');
+              // Navigator.pop(context);
             },
           ),
           const SizedBox(

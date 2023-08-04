@@ -62,6 +62,14 @@ class _CharactersPageState extends State<CharactersPage> with Loader, Messages {
                 switch (state.status) {
                   case CharacterStateStatus.loading:
                     showLoader(ColorsStyles.i.hogwartsBlack, ColorsStyles.i.hogwartsGold);
+                  case CharacterStateStatus.loadingGryffindor:
+                    showLoader(ColorsStyles.i.griffindorRed, ColorsStyles.i.griffindorGold);
+                  case CharacterStateStatus.loadingSlytherin:
+                    showLoader(ColorsStyles.i.slytherinDarkGreen, ColorsStyles.i.slytherinLightSilver);
+                  case CharacterStateStatus.loadingRavenClaw:
+                    showLoader(ColorsStyles.i.ravenClawDarkBlue, ColorsStyles.i.ravenClawGold);
+                  case CharacterStateStatus.loadingHufflePuff:
+                    showLoader(ColorsStyles.i.hufflepuffYellow, ColorsStyles.i.hufflepuffDarkBrown);
                   case _:
                     hideLoader();
                 }
@@ -83,19 +91,24 @@ class _CharactersPageState extends State<CharactersPage> with Loader, Messages {
                         return CharacterTile(characterName: state.characters[index].name);
                       },
                     )),
-                    AppDefaultButton(
-                      style: ButtonStyles.i.hogwartsButton,
-                      label: 'Filtro',
-                      onPressed: () {
-                        showModalBottomSheet(
-                          backgroundColor: ColorsStyles.i.hogwartsGold.withAlpha(80),
-                          context: context,
-                          builder: (context) {
-                            return ModalBottonSheetFilter(state: state);
+                    Builder(
+                      builder: (context) {
+                        return AppDefaultButton(
+                          style: ButtonStyles.i.hogwartsButton,
+                          label: 'Filtro',
+                          onPressed: () {
+                            showModalBottomSheet(
+                              useRootNavigator: true,
+                              backgroundColor: ColorsStyles.i.hogwartsGold.withAlpha(80),
+                              context: context,
+                              builder: (context) {
+                                return ModalBottonSheetFilter(state: state);
+                              },
+                            );
                           },
                         );
                       },
-                    )
+                    ),
                   ],
                 );
               },

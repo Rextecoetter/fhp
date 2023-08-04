@@ -26,4 +26,16 @@ class CharacterRepositoryImpl extends CharacterRepository {
     }
     return characterList;
   }
+
+  @override
+  Future<CharacterModel?> getCharacter(int id) async {
+    CharacterModel? character;
+    try {
+      var result = await dio.get('/characters/$id');
+      character = CharacterModel.fromMap(result.data);
+    } on DioException catch (e, s) {
+      log('Erro ao buscar personagem', error: e, stackTrace: s);
+    }
+    return character;
+  }
 }
