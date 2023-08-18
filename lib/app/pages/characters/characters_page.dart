@@ -90,7 +90,7 @@ class _CharactersPageState extends State<CharactersPage> with Loader, Messages {
                         child: ListView.builder(
                       itemCount: state.characters.length,
                       itemBuilder: (context, index) {
-                        return CharacterTile(characterName: state.characters[index].name);
+                        return CharacterTile(character: state.characters[index]);
                       },
                     )),
                     Builder(

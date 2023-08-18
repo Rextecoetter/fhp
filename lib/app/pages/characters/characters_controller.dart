@@ -18,11 +18,41 @@ class CharactersController extends Cubit<CharacterState> {
       emit(state.copyWith(status: CharacterStateStatus.loaded, characters: characters));
     }
 
-    if (param != null && param.toLowerCase().contains('gryffindor')) {
-      emit(state.copyWith(status: CharacterStateStatus.loadingGryffindor));
-      final characters = await _characterRepository.getAllCharacters();
-      final filtered = byHouse(param, characters);
-      emit(state.copyWith(status: CharacterStateStatus.loaded, characters: filtered));
+    if (param != null) {
+      if (param.toLowerCase().contains('gryffindor')) {
+        emit(state.copyWith(status: CharacterStateStatus.loadingGryffindor));
+        final characters = await _characterRepository.getAllCharacters();
+        final filtered = listByHouse(param, characters);
+        emit(state.copyWith(status: CharacterStateStatus.loaded, characters: filtered));
+      }
+
+      if (param.toLowerCase().contains('slytherin')) {
+        emit(state.copyWith(status: CharacterStateStatus.loadingSlytherin));
+        final characters = await _characterRepository.getAllCharacters();
+        final filtered = listByHouse(param, characters);
+        emit(state.copyWith(status: CharacterStateStatus.loaded, characters: filtered));
+      }
+
+      if (param.toLowerCase().contains('hufflepuff')) {
+        emit(state.copyWith(status: CharacterStateStatus.loadingHufflePuff));
+        final characters = await _characterRepository.getAllCharacters();
+        final filtered = listByHouse(param, characters);
+        emit(state.copyWith(status: CharacterStateStatus.loaded, characters: filtered));
+      }
+
+      if (param.toLowerCase().contains('ravenclaw')) {
+        emit(state.copyWith(status: CharacterStateStatus.loadingRavenClaw));
+        final characters = await _characterRepository.getAllCharacters();
+        final filtered = listByHouse(param, characters);
+        emit(state.copyWith(status: CharacterStateStatus.loaded, characters: filtered));
+      }
+
+      if (param.toLowerCase().contains('staff')) {
+        emit(state.copyWith(status: CharacterStateStatus.loading));
+        final characters = await _characterRepository.getAllCharacters();
+        final filtered = listByStaff(characters);
+        emit(state.copyWith(status: CharacterStateStatus.loaded, characters: filtered));
+      }
     }
   }
 
@@ -42,31 +72,23 @@ class CharactersController extends Cubit<CharacterState> {
     emit(state.copyWith(status: CharacterStateStatus.loaded, characters: tempList));
   }
 
-  List<CharacterModel> byHouse(String house, List<CharacterModel> characters) {
+  List<CharacterModel> listByHouse(String house, List<CharacterModel> characters) {
     List<CharacterModel> filtered = [];
-
     for (var character in characters) {
       if (character.house.toLowerCase().contains(house.toLowerCase())) {
         filtered.add(character);
       }
     }
-
     return filtered;
   }
 
-  // void getFilteredByHouse({required List<CharacterModel> characterModelList, required String house}) {
-  //   if (house.isEmpty) {
-  //     loadCharacters();
-  //     return;
-  //   }
-
-  //   final List<CharacterModel> tempList = [];
-  //   emit(state.copyWith(status: CharacterStateStatus.loading));
-  //   for (var characterModel in characterModelList) {
-  //     if (characterModel.house.toLowerCase().contains(house.toLowerCase())) {
-  //       tempList.add(characterModel);
-  //     }
-  //   }
-  //   emit(state.copyWith(status: CharacterStateStatus.loaded, characters: tempList));
-  // }
+  List<CharacterModel> listByStaff(List<CharacterModel> characters) {
+    List<CharacterModel> filtered = [];
+    for (var character in characters) {
+      if (character.hogwartsStaff) {
+        filtered.add(character);
+      }
+    }
+    return filtered;
+  }
 }

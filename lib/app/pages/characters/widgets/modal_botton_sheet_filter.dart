@@ -25,10 +25,6 @@ class ModalBottonSheetFilter extends StatelessWidget {
                 '/characters',
                 ModalRoute.withName('/inicial'),
               );
-              // context
-              //     .read<CharactersController>()
-              //     .getFilteredByHouse(characterModelList: state.characters, house: 'Gryffindor');
-              // Navigator.pop(context);
             },
           ),
           const SizedBox(
@@ -39,7 +35,11 @@ class ModalBottonSheetFilter extends StatelessWidget {
             label: 'Alunos de Sonserina',
             width: 300,
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                arguments: 'Slytherin',
+                '/characters',
+                ModalRoute.withName('/inicial'),
+              );
             },
           ),
           const SizedBox(
@@ -50,7 +50,11 @@ class ModalBottonSheetFilter extends StatelessWidget {
             label: 'Alunos de Corvinal',
             width: 300,
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                arguments: 'RavenClaw',
+                '/characters',
+                ModalRoute.withName('/inicial'),
+              );
             },
           ),
           const SizedBox(
@@ -61,7 +65,11 @@ class ModalBottonSheetFilter extends StatelessWidget {
             label: 'Alunos de Lufa Lufa',
             width: 300,
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                arguments: 'HufflePuff',
+                '/characters',
+                ModalRoute.withName('/inicial'),
+              );
             },
           ),
           const SizedBox(
@@ -72,7 +80,11 @@ class ModalBottonSheetFilter extends StatelessWidget {
             label: 'Staff de Hogwarts',
             width: 300,
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                arguments: 'Staff',
+                '/characters',
+                ModalRoute.withName('/inicial'),
+              );
             },
           ),
           const SizedBox(
@@ -83,7 +95,10 @@ class ModalBottonSheetFilter extends StatelessWidget {
             label: 'Todos os Personagens',
             width: 300,
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                '/characters',
+                ModalRoute.withName('/inicial'),
+              );
             },
           )
         ],

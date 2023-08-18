@@ -1,8 +1,10 @@
+import 'package:fhp/app/core/ui/style/text_styles.dart';
+import 'package:fhp/app/models/character_model.dart';
 import 'package:fhp/app/pages/character_detail/character_detail_controller.dart';
-import 'package:fhp/app/pages/character_detail/chcaracter_detail_state.dart';
+import 'package:fhp/app/pages/character_detail/character_detail_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:provider/provider.dart';
 import '../../core/ui/helper/loader.dart';
 import '../../core/ui/helper/messages.dart';
 import '../../core/ui/style/colors_styles.dart';
@@ -15,13 +17,38 @@ class CharacterDetailPage extends StatefulWidget {
 }
 
 class _CharacterDetailPageState extends State<CharacterDetailPage> with Loader, Messages {
+  CharacterModel? characterModel;
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      final param = ModalRoute.of(context)?.settings.arguments as CharacterModel;
+      context.read<CharacterDetailController>().initializing(param);
+
+      setState(() {
+        characterModel = param;
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-        decoration: const BoxDecoration(
-          image: DecorationImage(image: AssetImage('assets/images/default_background.jpg'), fit: BoxFit.fitHeight),
+      decoration: const BoxDecoration(
+        image: DecorationImage(image: AssetImage('assets/images/default_background.jpg'), fit: BoxFit.fitHeight),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          centerTitle: true,
+          title: Text(
+            characterModel?.name ?? '',
+            style: TextStyles.i.textTitleLabel.copyWith(color: ColorsStyles.i.hogwartsBlack),
+          ),
         ),
-        child: BlocConsumer<CharacterDetailController, ChcaracterDetailState>(
+        body: BlocConsumer<CharacterDetailController, CharacterDetailState>(
           listener: (context, state) {
             switch (state.status) {
               case CharacterDetailStateStatus.loading:
@@ -31,14 +58,16 @@ class _CharacterDetailPageState extends State<CharacterDetailPage> with Loader, 
             }
           },
           builder: (context, state) {
-            return Scaffold(
-              backgroundColor: Colors.transparent,
-              appBar: AppBar(
-                centerTitle: true,
-                title: Text(state.character?.name ?? ''),
+            return Padding(
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+              child: Text(
+                'Batata',
+                style: TextStyles.i.textExtraBold.copyWith(fontSize: 50, color: state.colorA),
               ),
             );
           },
-        ));
+        ),
+      ),
+    );
   }
 }

@@ -13,9 +13,7 @@ class CharactersRouter {
   static Widget get page => MultiProvider(
         providers: [
           Provider<CharacterRepository>(
-            create: (context) => CharacterRepositoryImpl(
-              dio: context.read<CustomDio>(),
-            ),
+            create: (context) => CharacterRepositoryImpl(dio: context.read<CustomDio>()),
           ),
           Provider<CharactersController>(
             create: (context) => CharactersController(context.read()),
