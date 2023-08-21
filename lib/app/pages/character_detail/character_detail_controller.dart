@@ -7,14 +7,17 @@ import 'package:fhp/app/repositories/character_repository/character_repository.d
 import 'package:flutter/material.dart';
 
 class CharacterDetailController extends Cubit<CharacterDetailState> {
-  final CharacterRepository _characterRepository;
+  //final CharacterRepository _characterRepository;
   CharacterModel? characterModel;
   Color? colorA;
   Color? colorB;
+  Color? colorC;
+  Color? colorD;
 
   CharacterDetailController(
-    this._characterRepository,
-  ) : super(const CharacterDetailState.inicial());
+      //this._characterRepository,
+      )
+      : super(const CharacterDetailState.inicial());
 
   void initializing(CharacterModel characterModel) {
     emit(state.copyWith(status: CharacterDetailStateStatus.loading));
@@ -25,21 +28,37 @@ class CharacterDetailController extends Cubit<CharacterDetailState> {
         case 'gryffindor':
           colorA = ColorsStyles.i.griffindorRed;
           colorB = ColorsStyles.i.griffindorGold;
+          colorC = ColorsStyles.i.griffindorDarkRed;
+          colorD = ColorsStyles.i.griffindorYellow;
         case 'slytherin':
           colorA = ColorsStyles.i.slytherinDarkGreen;
           colorB = ColorsStyles.i.slytherinDarkSilver;
+          colorC = ColorsStyles.i.slytherinGreen;
+          colorD = ColorsStyles.i.slytherinLightSilver;
         case 'ravenclaw':
           colorA = ColorsStyles.i.ravenClawDarkBlue;
           colorB = ColorsStyles.i.ravenClawGold;
+          colorC = ColorsStyles.i.ravenClawBlue;
+          colorD = ColorsStyles.i.ravenClawGrey;
         case 'hufflepuff':
           colorA = ColorsStyles.i.hufflepuffLightYellow;
           colorB = ColorsStyles.i.hufflepuffDarkBrown;
+          colorC = ColorsStyles.i.hufflepuffLghtBrown;
+          colorD = ColorsStyles.i.hufflepuffYellow;
       }
     } else {
       colorA = ColorsStyles.i.hogwartsBlack;
       colorB = ColorsStyles.i.hogwartsGold;
+      colorC = colorA;
+      colorD = colorB;
     }
     emit(state.copyWith(
-        status: CharacterDetailStateStatus.loaded, colorA: colorA, colorB: colorB, character: characterModel));
+      status: CharacterDetailStateStatus.loaded,
+      colorA: colorA,
+      colorB: colorB,
+      colorC: colorC,
+      colorD: colorD,
+      character: characterModel,
+    ));
   }
 }

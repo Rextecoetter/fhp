@@ -11,11 +11,11 @@ class CharacterDetailRouter {
 
   static Widget get page => MultiProvider(
         providers: [
-          Provider<CharacterRepository>(
-            create: (context) => CharacterRepositoryImpl(dio: context.read<CustomDio>()),
-          ),
+          // Provider<CharacterRepository>(
+          //   create: (context) => CharacterRepositoryImpl(dio: context.read<CustomDio>()),
+          // ),
           Provider<CharacterDetailController>(
-            create: (context) => CharacterDetailController(context.read()),
+            create: (context) => CharacterDetailController(),
           ),
         ],
         builder: (context, child) => const CharacterDetailPage(),
