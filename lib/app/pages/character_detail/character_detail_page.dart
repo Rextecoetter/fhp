@@ -1,7 +1,9 @@
+import 'package:fhp/app/core/ui/helper/size_extension.dart';
 import 'package:fhp/app/core/ui/style/text_styles.dart';
 import 'package:fhp/app/models/character_model.dart';
 import 'package:fhp/app/pages/character_detail/character_detail_controller.dart';
 import 'package:fhp/app/pages/character_detail/character_detail_state.dart';
+import 'package:fhp/app/pages/character_detail/widgets/alternative_name_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../core/ui/helper/loader.dart';
@@ -88,26 +90,80 @@ class _CharacterDetailPageState extends State<CharacterDetailPage> with Loader, 
                               child: CircleAvatar(
                                 backgroundColor: Colors.transparent,
                                 radius: 25,
-                                backgroundImage: NetworkImage(state.character?.image ?? ''), //todo tratar sem imagens
+                                backgroundImage: NetworkImage(state.character?.image ?? ''),
                               ),
                             ),
                           ),
                         ),
-                        Text(
-                          state.character?.name ?? 'Batata',
-                          style: TextStyles.i.textExtraBold.copyWith(fontSize: 50, color: state.colorA),
-                        ),
-                        Text(
-                          state.character?.name ?? 'Batata',
-                          style: TextStyles.i.textExtraBold.copyWith(fontSize: 50, color: state.colorB),
-                        ),
-                        Text(
-                          state.character?.name ?? 'Batata',
-                          style: TextStyles.i.textExtraBold.copyWith(fontSize: 50, color: state.colorC),
-                        ),
-                        Text(
-                          state.character?.name ?? 'Batata',
-                          style: TextStyles.i.textExtraBold.copyWith(fontSize: 50, color: state.colorD),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                          child: SizedBox(
+                            height: context.percentHeight(.6),
+                            width: context.percentWidth(1),
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.vertical,
+                              physics: const BouncingScrollPhysics(),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Nome:',
+                                          style: TextStyles.i.textBold.copyWith(fontSize: 30, color: state.colorA),
+                                        ),
+                                        Text(
+                                          state.character?.name ?? '',
+                                          style: TextStyles.i.textBold.copyWith(fontSize: 30, color: state.colorB),
+                                        ),
+                                      ],
+                                    ),
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Apelidos:',
+                                          style: TextStyles.i.textBold.copyWith(fontSize: 30, color: state.colorA),
+                                        ),
+                                        AlternativeNameTile(
+                                          alternateNames: state.character?.alternateNames ?? List.empty(),
+                                          textColor: state.colorB ?? Colors.black,
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Ator:',
+                                          style: TextStyles.i.textBold.copyWith(fontSize: 30, color: state.colorA),
+                                        ),
+                                        Text(
+                                          state.character?.actor ?? '',
+                                          style: TextStyles.i.textBold.copyWith(fontSize: 30, color: state.colorB),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Casa:',
+                                          style: TextStyles.i.textBold.copyWith(fontSize: 30, color: state.colorA),
+                                        ),
+                                        Text(
+                                          state.character?.house ?? '',
+                                          style: TextStyles.i.textBold.copyWith(fontSize: 30, color: state.colorB),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                       ],
                     ),

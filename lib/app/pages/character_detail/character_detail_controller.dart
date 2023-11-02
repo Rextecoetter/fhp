@@ -23,6 +23,17 @@ class CharacterDetailController extends Cubit<CharacterDetailState> {
     emit(state.copyWith(status: CharacterDetailStateStatus.loading));
     this.characterModel = characterModel;
 
+    if (characterModel.image.isEmpty) {
+      this.characterModel = characterModel.copyWith(
+          image:
+              'https://img.freepik.com/fotos-gratis/fundo-preto-antigo-textura-do-grunge-papel-de-parede-escuro-quadro-negro-quadro-negro-parede-da-sala_1258-28312.jpg');
+    }
+
+    colorA = ColorsStyles.i.hogwartsBlack;
+    colorB = ColorsStyles.i.hogwartsGold;
+    colorC = colorA;
+    colorD = colorB;
+
     if (!characterModel.hogwartsStaff) {
       switch (characterModel.house.toLowerCase()) {
         case 'gryffindor':
@@ -46,11 +57,6 @@ class CharacterDetailController extends Cubit<CharacterDetailState> {
           colorC = ColorsStyles.i.hufflepuffLghtBrown;
           colorD = ColorsStyles.i.hufflepuffYellow;
       }
-    } else {
-      colorA = ColorsStyles.i.hogwartsBlack;
-      colorB = ColorsStyles.i.hogwartsGold;
-      colorC = colorA;
-      colorD = colorB;
     }
     emit(state.copyWith(
       status: CharacterDetailStateStatus.loaded,
@@ -58,7 +64,7 @@ class CharacterDetailController extends Cubit<CharacterDetailState> {
       colorB: colorB,
       colorC: colorC,
       colorD: colorD,
-      character: characterModel,
+      character: this.characterModel,
     ));
   }
 }

@@ -22,7 +22,7 @@ class CharacterRepositoryImpl extends CharacterRepository {
         characterList.add(tempCharacter);
       }
     } on DioException catch (e, s) {
-      log('Erro', error: e, stackTrace: s);
+      log('Erro: Não foi possível buscar personagens!', error: e, stackTrace: s);
     }
     return characterList;
   }
