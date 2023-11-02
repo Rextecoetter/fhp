@@ -3,7 +3,6 @@ import 'package:fhp/app/core/ui/style/colors_styles.dart';
 import 'package:fhp/app/models/character_model.dart';
 
 import 'package:fhp/app/pages/character_detail/character_detail_state.dart';
-import 'package:fhp/app/repositories/character_repository/character_repository.dart';
 import 'package:flutter/material.dart';
 
 class CharacterDetailController extends Cubit<CharacterDetailState> {

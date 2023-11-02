@@ -1,8 +1,5 @@
-import 'package:fhp/app/core/custom_dio/custom_dio.dart';
 import 'package:fhp/app/pages/character_detail/character_detail_controller.dart';
 import 'package:fhp/app/pages/character_detail/character_detail_page.dart';
-import 'package:fhp/app/repositories/character_repository/character_repository.dart';
-import 'package:fhp/app/repositories/character_repository/character_repository_impl.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

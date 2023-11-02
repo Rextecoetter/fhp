@@ -159,6 +159,45 @@ class _CharacterDetailPageState extends State<CharacterDetailPage> with Loader, 
                                         ),
                                       ],
                                     ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Especie:',
+                                          style: TextStyles.i.textBold.copyWith(fontSize: 30, color: state.colorA),
+                                        ),
+                                        Text(
+                                          state.character?.species ?? '',
+                                          style: TextStyles.i.textBold.copyWith(fontSize: 30, color: state.colorB),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Bruxo:',
+                                          style: TextStyles.i.textBold.copyWith(fontSize: 30, color: state.colorA),
+                                        ),
+                                        Text(
+                                          state.character?.wizard == true ? 'Sim' : 'Não',
+                                          style: TextStyles.i.textBold.copyWith(fontSize: 30, color: state.colorB),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Vivo no final:',
+                                          style: TextStyles.i.textBold.copyWith(fontSize: 30, color: state.colorA),
+                                        ),
+                                        Text(
+                                          state.character?.alive == true ? 'Sim' : 'Não',
+                                          style: TextStyles.i.textBold.copyWith(fontSize: 30, color: state.colorB),
+                                        ),
+                                      ],
+                                    )
                                   ],
                                 ),
                               ),

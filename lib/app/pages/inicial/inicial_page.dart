@@ -40,7 +40,9 @@ class InicialPage extends StatelessWidget {
               AppDefaultButton(
                 style: ButtonStyles.i.hogwartsButton,
                 label: 'Magias',
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/spells');
+                },
               ),
             ],
           ),
