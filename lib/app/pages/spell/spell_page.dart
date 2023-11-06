@@ -3,6 +3,8 @@ import 'package:fhp/app/core/ui/helper/messages.dart';
 import 'package:fhp/app/core/ui/style/colors_styles.dart';
 import 'package:fhp/app/core/ui/style/text_styles.dart';
 import 'package:fhp/app/pages/spell/spell_controller.dart';
+import 'package:fhp/app/pages/spell/spell_state.dart';
+import 'package:fhp/app/pages/spell/widgets/spell_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,7 +39,36 @@ class _SpellPageState extends State<SpellPage> with Loader, Messages {
             style: TextStyles.i.textTitleLabel.copyWith(color: ColorsStyles.i.hogwartsBlack),
           ),
         ),
-        body: Container(),
+        body: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+          child: Center(
+            child: BlocConsumer<SpellController, SpellState>(
+              listener: (context, state) {
+                switch (state.status) {
+                  case SpellStateStatus.loading:
+                    showLoader(ColorsStyles.i.hogwartsBlack, ColorsStyles.i.hogwartsGold);
+                  case _:
+                    hideLoader();
+                }
+              },
+              builder: (context, state) {
+                return Column(
+                  children: [
+                    Expanded(
+                        child: ListView.builder(
+                      itemCount: state.spellList.length,
+                      itemBuilder: (context, index) {
+                        return SpellTile(
+                          spell: state.spellList[index],
+                        );
+                      },
+                    ))
+                  ],
+                );
+              },
+            ),
+          ),
+        ),
       ),
     );
   }
