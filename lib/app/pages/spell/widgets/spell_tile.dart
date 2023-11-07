@@ -12,44 +12,60 @@ class SpellTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
-      child: Container(
-        width: double.infinity,
+      child: SizedBox(
         height: 70,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [ColorsStyles.i.hogwartsBlack.withOpacity(1), ColorsStyles.i.hogwartsGold.withOpacity(.2)]),
-          borderRadius: const BorderRadius.all(Radius.circular(15)),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              width: double.infinity,
-              height: 10,
-              decoration: const BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(15),
-                  topRight: Radius.circular(15),
+        child: Container(
+          width: double.infinity,
+          height: 70,
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                width: double.infinity,
+                height: 10,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [ColorsStyles.i.hogwartsBlack, ColorsStyles.i.hogwartsGold]),
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15),
+                  ),
                 ),
               ),
-            ),
-            Text(
-              spell.name,
-              style: TextStyles.i.textBold.copyWith(color: ColorsStyles.i.hogwartsBlack, fontSize: 25),
-            ),
-            Container(
-              width: double.infinity,
-              height: 10,
-              decoration: const BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(15),
-                  bottomRight: Radius.circular(15),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: 10,
+                    height: 50,
+                    decoration: BoxDecoration(color: ColorsStyles.i.hogwartsBlack),
+                  ),
+                  Text(
+                    spell.name,
+                    style: TextStyles.i.textBold.copyWith(color: ColorsStyles.i.hogwartsBlack, fontSize: 25),
+                  ),
+                  Container(
+                    width: 10,
+                    height: 50,
+                    decoration: BoxDecoration(color: ColorsStyles.i.hogwartsGold),
+                  ),
+                ],
+              ),
+              Container(
+                width: double.infinity,
+                height: 10,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [ColorsStyles.i.hogwartsBlack, ColorsStyles.i.hogwartsGold]),
+                  borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(15),
+                    bottomRight: Radius.circular(15),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
