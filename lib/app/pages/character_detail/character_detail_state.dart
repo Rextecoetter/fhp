@@ -22,7 +22,7 @@ class CharacterDetailState extends Equatable {
       {required this.status, this.character, this.colorA, this.colorB, this.colorC, this.colorD});
 
   @override
-  List<Object?> get props => [status, character, colorA, colorB];
+  List<Object?> get props => [status, character, colorA, colorB, colorC, colorD];
 
   const CharacterDetailState.inicial()
       : status = CharacterDetailStateStatus.initial,

@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
+import 'package:fhp/app/core/ui/style/colors_styles.dart';
 import 'package:fhp/app/models/character_model.dart';
 import 'package:fhp/app/pages/characters/character_state.dart';
+import 'package:flutter/material.dart';
 
 import '../../repositories/character_repository/character_repository.dart';
 
@@ -90,5 +92,47 @@ class CharactersController extends Cubit<CharacterState> {
       }
     }
     return filtered;
+  }
+
+  List<Color> getColors(CharacterModel characterModel) {
+    Color colorA;
+    Color colorB;
+    Color colorC;
+    Color colorD;
+
+    List<Color> colors = [];
+
+    colorA = ColorsStyles.i.hogwartsBlack;
+    colorB = ColorsStyles.i.hogwartsGold;
+    colorC = colorA;
+    colorD = colorB;
+
+    if (!characterModel.hogwartsStaff) {
+      switch (characterModel.house.toLowerCase()) {
+        case 'gryffindor':
+          colorA = ColorsStyles.i.griffindorRed;
+          colorB = ColorsStyles.i.griffindorGold;
+          colorC = ColorsStyles.i.griffindorDarkRed;
+          colorD = ColorsStyles.i.griffindorYellow;
+        case 'slytherin':
+          colorA = ColorsStyles.i.slytherinDarkGreen;
+          colorB = ColorsStyles.i.slytherinDarkSilver;
+          colorC = ColorsStyles.i.slytherinGreen;
+          colorD = ColorsStyles.i.slytherinLightSilver;
+        case 'ravenclaw':
+          colorA = ColorsStyles.i.ravenClawDarkBlue;
+          colorB = ColorsStyles.i.ravenClawGold;
+          colorC = ColorsStyles.i.ravenClawBlue;
+          colorD = ColorsStyles.i.ravenClawGrey;
+        case 'hufflepuff':
+          colorA = ColorsStyles.i.hufflepuffLightYellow;
+          colorB = ColorsStyles.i.hufflepuffDarkBrown;
+          colorC = ColorsStyles.i.hufflepuffLghtBrown;
+          colorD = ColorsStyles.i.hufflepuffYellow;
+      }
+    }
+    colors.addAll([colorA, colorB, colorC, colorD]);
+
+    return colors;
   }
 }

@@ -11,7 +11,7 @@ class SpellTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+      padding: const EdgeInsets.fromLTRB(0, 3, 0, 3),
       child: SizedBox(
         height: 70,
         child: Container(

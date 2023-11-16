@@ -154,7 +154,8 @@ class _CharacterDetailPageState extends State<CharacterDetailPage> with Loader, 
                                           style: TextStyles.i.textBold.copyWith(fontSize: 30, color: state.colorA),
                                         ),
                                         Text(
-                                          state.character?.house ?? '',
+                                          state.character?.house ?? '', //todo tentar resolver nenhuma escola
+                                          //state.character ? 'batata' : 'batata'
                                           style: TextStyles.i.textBold.copyWith(fontSize: 30, color: state.colorB),
                                         ),
                                       ],
